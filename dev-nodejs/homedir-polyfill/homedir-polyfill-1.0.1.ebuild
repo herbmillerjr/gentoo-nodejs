@@ -13,7 +13,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=net-libs/nodejs-4.8.7"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	>=dev-nodejs/parse-passwd-1.0.0"
 
 src_install() {
 	insinto "/usr/$(get_libdir)/node_modules/${PN}"
