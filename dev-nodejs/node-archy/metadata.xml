@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">sindresorhus/has-flag</remote-id>
+		<remote-id type="github">substack/node-archy</remote-id>
 	</upstream>
 </pkgmetadata>
