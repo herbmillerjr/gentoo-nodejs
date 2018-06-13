@@ -17,6 +17,8 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	local install_dir="/usr/$(get_libdir)/node_modules/${PN}"
+	insinto $install_dir
+	doins package.json
 	insinto $install_dir/fixtures
 	doins fixtures/ansi-codes.js
 	exeinto $install_dir/fixtures
