@@ -19,6 +19,8 @@ RDEPEND="${DEPEND}
 	>=dev-nodejs/for-own-1.0.0
 	>=dev-nodejs/isobject-3.0.0"
 
+S="${WORKDIR}/${P/-/.}"
+
 src_install() {
 	insinto "/usr/$(get_libdir)/node_modules/${PN}"
 	doins index.js
