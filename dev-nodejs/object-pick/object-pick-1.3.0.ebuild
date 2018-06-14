@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${P/-/.}"
 
 src_install() {
-	insinto "/usr/$(get_libdir)/node_modules/${PN}"
+	insinto "/usr/$(get_libdir)/node_modules/${PN/-/.}"
 	doins index.js
 	doins package.json
 }
