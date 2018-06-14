@@ -16,12 +16,12 @@ fi
 REPO_INFO=`cat $CONTENT_FILE | base64 --decode`
 LICENSE=`echo $REPO_INFO | jq -r '.license'`
 MAIN=`echo $REPO_INFO | jq -r '.main'`
-DESCRIPTION=`echo $REPO_INFO | jq -r '.description' | cut -d. -f1`
+DESCRIPTION=`echo $REPO_INFO | jq -r '.description' | cut -d. -f1 | sed 's/\`//g'`
 
-PACKAGE_DIR=dev-nodejs/${PACKAGE}
+PACKAGE_DIR=dev-nodejs/${PACKAGE/./-}
 mkdir -p ${PACKAGE_DIR}
 
-EBUILD_FILENAME=${PACKAGE}-${VERSION}.ebuild
+EBUILD_FILENAME=${PACKAGE/./-}-${VERSION}.ebuild
 EBUILD=${PACKAGE_DIR}/${EBUILD_FILENAME}
 cp template.ebuild ${EBUILD}
 sed -i "s/<LICENSE>/${LICENSE}/" ${EBUILD}
