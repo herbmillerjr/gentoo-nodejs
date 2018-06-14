@@ -2,7 +2,7 @@
 
 set -ex
 
-HOME=`npm view ${1} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/##`
+HOME=`npm view ${1} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/## | cut -d# -f1`
 OWNER=${HOME%%/*}
 PACKAGE=$1
 VERSION=`npm view ${1} | grep version: | awk -F\' '{print $2}'`
@@ -43,7 +43,7 @@ if [ $(head -1 $DEPENDENCIES_FILE) != "null" ]; then
 		rm $GENTOO_DEPENDENCIES_FILE
 	fi
 	for DEPENDENCY in `echo $REPO_INFO | jq -r '.dependencies|keys[]'`; do
-		REAL_DEPENDENCY_NAME=`npm view ${DEPENDENCY} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/## | cut -d/ -f2`
+		REAL_DEPENDENCY_NAME=`npm view ${DEPENDENCY} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/## | cut -d/ -f2 | sed 's/\./-/'`
 		DEPENDENCY_VERSION=`echo $REPO_INFO | jq -r ".dependencies|.\"$DEPENDENCY\""`
 		if echo DEPENDENCY_VERSION | grep -q "^"; then
 			sed -i -r "s#(<DEPENDENCIES>)#\n\t>=dev-nodejs/${REAL_DEPENDENCY_NAME}-${DEPENDENCY_VERSION##^}\1#" ${EBUILD}
