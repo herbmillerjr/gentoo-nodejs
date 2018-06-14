@@ -2,7 +2,7 @@
 
 set -ex
 
-HOME=`npm view ${1} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/## | cut -d# -f1`
+HOME=${2:-`npm view ${1} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/## | cut -d# -f1`}
 OWNER=${HOME%%/*}
 PACKAGE=$1
 VERSION=`npm view ${1} | grep version: | awk -F\' '{print $2}'`
