@@ -25,7 +25,7 @@ EBUILD_FILENAME=${PACKAGE/./-}-${VERSION}.ebuild
 EBUILD=${PACKAGE_DIR}/${EBUILD_FILENAME}
 cp template.ebuild ${EBUILD}
 sed -i "s/<LICENSE>/${LICENSE}/" ${EBUILD}
-sed -i "s/<MAIN>/${MAIN}/" ${EBUILD}
+sed -i "s/<MAIN>/${MAIN%%/*}/" ${EBUILD}
 sed -i "s#<REPO>#${HOME}#" ${EBUILD}
 sed -i "s/<AUTHOR>/${OWNER}/" ${EBUILD}
 sed -i "s#<DESCRIPTION>#${DESCRIPTION}#" ${EBUILD}
