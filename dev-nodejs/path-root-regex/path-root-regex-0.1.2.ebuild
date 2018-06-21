@@ -3,9 +3,9 @@
 
 EAPI=6
 
-DESCRIPTION="Regular expression for getting the root of a posix or windows filepath."
+DESCRIPTION="Regular expression for getting the root of a posix or windows filepath"
 HOMEPAGE="https://github.com/regexhq/path-root-regex"
-SRC_URI="https://github.com/herbmillerjr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/regexhq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
