@@ -5,7 +5,10 @@ set -ex
 HOME=${2:-`npm view ${1} | grep homepage: | awk -F\' '{print $2}' | sed s#https://github.com/## | cut -d# -f1`}
 OWNER=${HOME%%/*}
 PACKAGE=$1
-VERSION=`npm view ${1} | grep version: | awk -F\' '{print $2}'`
+
+if [ -z $VERSION ]; then
+	VERSION=`npm view ${1} | grep version: | awk -F\' '{print $2}'`
+fi
 
 CONTENT_FILE=/tmp/content
 curl https://api.github.com/repos/${HOME}/contents/package.json?ref=${VERSION} | jq -r '.content' > ${CONTENT_FILE}
