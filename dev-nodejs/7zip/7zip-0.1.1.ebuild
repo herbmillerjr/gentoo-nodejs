@@ -15,6 +15,8 @@ IUSE=""
 DEPEND=">=net-libs/nodejs-4.8.7"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"/win-"${P}"
+
 src_install() {
 	insinto "/usr/$(get_libdir)/node_modules/${PN}"
 	doins index.js
